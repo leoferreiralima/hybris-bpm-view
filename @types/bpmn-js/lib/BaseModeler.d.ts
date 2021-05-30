@@ -11,6 +11,8 @@
  * @param {Array<didi.Module>} [options.modules] a list of modules to override the default modules
  * @param {Array<didi.Module>} [options.additionalModules] a list of modules to use with the default modules
  */
+
+import BaseViewer from './BaseViewer'
 export default function BaseModeler(options?: {
     container?: any;
     width?: string | number;
@@ -19,7 +21,7 @@ export default function BaseModeler(options?: {
     modules?: Array<any>;
     additionalModules?: Array<any>;
 }): void;
-export default class BaseModeler {
+export default class BaseModeler extends BaseViewer {
     /**
      * A base modeler for BPMN 2.0 diagrams.
      *

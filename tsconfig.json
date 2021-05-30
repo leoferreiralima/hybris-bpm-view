@@ -14,11 +14,15 @@
     "outDir": "./dist",
     "strict": true ,
     "esModuleInterop": true,
+    "typeRoots": [
+      "./src/@types/"
+    ],
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
       "@/tests/*": ["../tests/*"],
     }
   },
-  "include": ["src", "tests", "electron"]
+  "include": ["src", "tests", "electron"],
+  "exclude": ["dist", "node_modules"]
 }
