@@ -6,9 +6,17 @@
     "jest": true
   },
   "extends": [
-    "standard",
-    "plugin:react/recommended",
-    "plugin:@typescript-eslint/recommended"
+    "airbnb",
+    "airbnb/hooks",
+    "plugin:@typescript-eslint/recommended",
+    "prettier",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": [
+    "@typescript-eslint", 
+    "react", 
+    "prettier",
+    "eslint-plugin-import-helpers"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -16,32 +24,57 @@
       "jsx": true
     },
     "ecmaVersion": 11,
-    "sourceType": "module"
+    "sourceType": "module",
+    "project": "./tsconfig.json"
   },
-  "plugins": [
-    "react",
-    "prettier",
-    "@typescript-eslint"
-  ],
   "rules": {
-    "react/prop-types": "off",
-    "react/react-in-jsx-scope": "off",
-    "no-use-before-define": "off",
-    "import/extensions": [
+    "import/no-unresolved": 0,
+    "react/jsx-filename-extension": [1, {
+      "extensions": [
+        ".ts",
+        ".tsx"
+      ]
+    }],
+    "prettier/prettier": [
       "error",
-      "ignorePackages",
       {
-        "ts": "never",
-        "tsx": "never"
+        "singleQuote": true,
+        "trailingComma": "all",
+        "arrowParens": "avoid",
+        "endOfLine": "auto"
+      }
+    ],
+    "no-use-before-define": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "react/style-prop-object": "off",
+    "import/extensions": ["error", "never"],
+    "import/prefer-default-export": "off",
+    "react/prop-types": 0,
+    "no-shadow": "off",
+    "@typescript-eslint/no-shadow": ["error"],
+    "import-helpers/order-imports": [
+      "error",
+      {
+        "newlinesBetween": "always", // new line between groups
+        "groups": [
+          "/^electron/", 
+          "/^react/", 
+          "module", 
+          "/^@shared/",
+          "/^@/", 
+          ["parent", "sibling", "index"]
+        ],
+        "alphabetize": { "order": "asc", "ignoreCase": true }
       }
     ]
   },
-  "settings": {
-    "import/resolver": {
-      "typescript": {} 
-    },
-    "react": {
-      "version": "detect"
+  "overrides": [
+    {
+      "files": ["electron/*.ts"],
+      "rules": {
+        "import/no-extraneous-dependencies": "off",
+        "no-console": "off"
+      }
     }
-  }
+  ]
 }
