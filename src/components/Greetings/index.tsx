@@ -1,5 +1,4 @@
 import React from 'react'
-
 import { Container, Image, Text } from './styles'
 
 const Greetings: React.FC = () => {

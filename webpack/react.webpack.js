@@ -5,6 +5,9 @@ const rootPath = path.resolve(__dirname, '..')
 
 module.exports = {
   resolve: {
+    alias: {
+      "@": path.resolve(rootPath, 'src')
+    },
     extensions: ['.tsx', '.ts', '.js'],
     mainFields: ['main', 'module', 'browser']
   },
@@ -37,6 +40,10 @@ module.exports = {
     publicPath: './'
   },
   plugins: [
-    new HtmlWebpackPlugin()
+    new HtmlWebpackPlugin({
+      template: path.resolve(rootPath, 'index.html'),
+      filename: 'index.html',
+      inject: 'body'
+    })
   ]
 }
