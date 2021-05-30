@@ -5,7 +5,6 @@ import installExtension, {
 } from 'electron-devtools-installer';
 
 import * as path from 'path';
-import * as url from 'url';
 
 let mainWindow: Electron.BrowserWindow | null;
 

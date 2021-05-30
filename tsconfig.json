@@ -16,7 +16,9 @@
     "esModuleInterop": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@/tests/*": ["../tests/*"],
     }
-  }
+  },
+  "include": ["src", "tests", "electron"]
 }

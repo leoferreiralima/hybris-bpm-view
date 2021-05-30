@@ -3,15 +3,15 @@
 
 module.exports = {
   preset: 'ts-jest',
-  testEnvironment: "jest-environment-jsdom",
+  testEnvironment: 'jest-environment-jsdom',
   roots: ['<rootDir>/tests'],
-  collectCoverageFrom: ['<rootDir>/src/**/*.ts','<rootDir>/src/**/*.tsx'],
+  collectCoverageFrom: ['<rootDir>/src/**/*.ts', '<rootDir>/src/**/*.tsx'],
   coverageDirectory: 'coverage',
   coverageProvider: 'babel',
   setupFilesAfterEnv: ['./tests/setupTests.ts'],
   clearMocks: true,
   moduleNameMapper: {
     '@/tests/(.*)': '<rootDir>/tests/$1',
-    '@/(.*)': '<rootDir>/src/$1'
-  }
-}
+    '@/(.*)': '<rootDir>/src/$1',
+  },
+};

@@ -18,7 +18,6 @@
     "prettier",
     "eslint-plugin-import-helpers"
   ],
-  "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
@@ -27,6 +26,7 @@
     "sourceType": "module",
     "project": "./tsconfig.json"
   },
+  "ignorePatterns": ["*.d.ts"],
   "rules": {
     "import/no-unresolved": 0,
     "react/jsx-filename-extension": [1, {
