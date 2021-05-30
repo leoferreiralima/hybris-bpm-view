@@ -1,5 +1,5 @@
 {
-  "name": "electron-react-typescript",
+  "name": "hybris-bpm-view",
   "version": "1.0.0",
   "description": "An Electron boilerplate including TypeScript, React, Jest and ESLint.",
   "main": "./dist/main.js",
@@ -14,8 +14,9 @@
     "build:run": "npm-run-all build start:electron",
     "build:electron": "webpack --config webpack/electron.webpack.js",
     "build:react": "webpack --config webpack/react.webpack.js",
-    "package": "npm-run-all build package:dist",
-    "package:dist": "electron-builder --dir",
+    "package:all": "npm run build && electron-builder -wl",
+    "package:linux": "npm run build && electron-builder --linux",
+    "package:win": "npm run build && electron-builder --win",
     "test": "jest",
     "test:staged": "npm test -- --findRelatedTests",
     "test:watch": "npm test -- --watch",
@@ -82,9 +83,37 @@
     "styled-components": "^5.3.0"
   },
   "build": {
-    "appId": "your.id",
-    "mac": {
-      "category": "public.app-category.video"
+    "appId": "br.com.leoferreiralima.electron.bpmn",
+    "productName": "Hybris Bpmn Modeler",
+    "win": {
+      "icon": "icons/icon.png",
+      "target": "nsis",
+      "publish": [
+        "github"
+      ]
+    },
+    "linux": {
+      "icon": "icons/icon.png",
+      "target": [
+        "deb",
+        "AppImage",
+        "snap",
+        "tar.gz",
+        "rpm"
+      ],
+      "category": "Development"
+    },
+    "snap": {
+      "confinement": "strict",
+      "plugs": [
+        "default",
+        {
+          "browser-support": {
+            "interface": "browser-support",
+            "allow-sandbox": false
+          }
+        }
+      ]
     },
     "directories": {
       "output": "packages"
