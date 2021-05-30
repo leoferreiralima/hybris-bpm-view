@@ -7,9 +7,14 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
-  body {
+  html, body {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
-    color: #E1E1E6;
+    font-size: 12px;
+  }
+
+  html, body, #root {
+    width: 100vw;
+    height: 100vh;
   }
 `;

@@ -1,5 +1,6 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CopyPlugin = require('copy-webpack-plugin');
 
 const rootPath = path.resolve(__dirname, '..')
 
@@ -44,6 +45,12 @@ module.exports = {
       template: path.resolve(rootPath, 'index.html'),
       filename: 'index.html',
       inject: 'body'
+    }),
+    new CopyPlugin({
+      patterns: [
+        { from: 'node_modules/bpmn-js/dist/assets', to: 'vendor/bpmn-js/assets' },
+        { from: 'node_modules/bpmn-js-properties-panel/dist/assets', to: 'vendor/bpmn-js-properties-panel/assets' },
+      ]
     })
   ]
 }

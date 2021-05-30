@@ -1,8 +1,10 @@
 import React, { useRef, useEffect, useState, useCallback } from 'react';
 
+import propertiesPanelModule from 'bpmn-js-properties-panel';
+import propertiesProviderModule from 'bpmn-js-properties-panel/lib/provider/bpmn';
 import BpmnModeler from 'bpmn-js/lib/Modeler';
 
-import { Container } from './styles';
+import { Container, BpmnContainer, PropertiesContainer } from './styles';
 
 interface BpmnProps {
   source?: string;
@@ -16,11 +18,7 @@ const Bpmn: React.FC<BpmnProps> = ({ source }) => {
     (bpmnSource: string) => {
       async function importBpmn() {
         if (!modeler) return;
-        try {
-          await modeler.importXML(bpmnSource);
-        } catch (err) {
-          console.error(err);
-        }
+        await modeler.importXML(bpmnSource);
       }
 
       importBpmn();
@@ -32,14 +30,26 @@ const Bpmn: React.FC<BpmnProps> = ({ source }) => {
     setModeler(
       new BpmnModeler({
         container: bpmnRef?.current,
+        propertiesPanel: {
+          parent: '#js-properties-panel',
+        },
+        additionalModules: [propertiesPanelModule, propertiesProviderModule],
       }),
     );
+  }, [bpmnRef]);
+
+  useEffect(() => {
     if (source) {
       openBpmn(source);
     }
-  }, [bpmnRef, openBpmn, source]);
+  }, [openBpmn, source]);
 
-  return <Container ref={bpmnRef} />;
+  return (
+    <Container>
+      <BpmnContainer ref={bpmnRef} />
+      <PropertiesContainer id="js-properties-panel" />
+    </Container>
+  );
 };
 
 export default Bpmn;
