@@ -8,7 +8,7 @@
     "dev": "npm-run-all -p dev:react electron:serve",
     "dev:electron": "cross-env NODE_ENV=development webpack --config webpack/electron.webpack.js --mode development && npm run start:electron",
     "dev:react": "cross-env NODE_ENV=development webpack server --config webpack/react.webpack.js --mode development",
-    "electron:serve": "wait-on http-get://localhost:4000/ && npm run dev:electron",
+    "electron:serve": "wait-on http-get://localhost:4444/ && npm run dev:electron",
     "start:electron": "electron .",
     "build": "npm-run-all build:electron build:react",
     "build:run": "npm-run-all build start:electron",
